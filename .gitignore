@@ -1,0 +1,6 @@
+.env              # Variables de entorno
+__pycache__/      # Caché de Python
+*.pyc             # Archivos compilados
+.dist/            # Builds o distribuciones
+.vscode/          # Configs de VSCode
+logs/             # Si algún día guardas logs
