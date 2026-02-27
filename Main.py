@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands
 from botconfig import TOKEN, PREFIX
@@ -13,9 +14,8 @@ async def on_ready():
     print(f"{bot.user} Sirviendo...")
 
 async def main():
-    # Cargar cogs correctamente
-    await bot.load_extension("cogs.fun")
-    await bot.start(TOKEN)  # token seguro desde .env
+    await bot.load_extension("cogs.fun")    
+    await bot.start(TOKEN)  # ⚡ usar start en vez de run
 
 if __name__ == "__main__":
     asyncio.run(main())
