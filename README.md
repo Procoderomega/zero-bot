@@ -26,7 +26,7 @@ Modular Cogs para organizar comandos
 
 Clona el repositorio:
 
-git clone https://github.com/Procoderomega/discord-bot-zero.git
+git clone https://github.com/Procoderomega/zero-bot.git
 cd discord-bot-zero
 
 
