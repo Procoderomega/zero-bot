@@ -9,7 +9,7 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 PREFIX = os.getenv("PREFIX", "--")
 
 intents = discord.Intents.default()
-intents.message_content = True  #? Privileged Intent, activar en portal Discord
+intents.message_content = True  #* Privileged Intent, activar en portal Discord
 
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 

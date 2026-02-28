@@ -11,8 +11,10 @@ class clearMessages(commands.Cog):
             await ctx.send("Numero invalido ❌")
             return
         if amount > 200:
-            await ctx.send("Numero mayor a 200 ❌")
+            await ctx.send("Porfavor elija un numero entre 1 y 200 ❌")
             return
+        
+        await ctx.send("Borrando mensajes... 🧼", delete_after=3)
         
         delete = await ctx.channel.purge(limit=amount)
         await ctx.send(f"Se eliminaron {len(delete)} mensajes 🧼", delete_after=5)
