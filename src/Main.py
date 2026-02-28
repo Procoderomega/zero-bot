@@ -19,18 +19,18 @@ class MyBot(commands.Bot):
         await self.load_extension("cogs.moderation")
         await self.load_extension("cogs.fun")
 
-        # Sync en desarrollo
+        # Sincronización rápida solo en tu servidor de desarrollo
         guild = discord.Object(id=GUILD_ID)
+        self.tree.copy_global_to(guild=guild)
         await self.tree.sync(guild=guild)
+        print("Slash commands sincronizados en desarrollo ⚡")
 
-        print("Slash commands sincronizados ⚡")
 
 bot = MyBot(command_prefix=PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
-    synced = await bot.tree.sync()
-    print(f"{bot.user} Sirviendo... | Slash sync: {len(synced)}")
+    print(f"{bot.user} Sirviendo...")
 
 if __name__ == "__main__":
     bot.run(TOKEN)

@@ -13,7 +13,7 @@ class BanUser(commands.Cog):
     async def ban(self, ctx, member: discord.Member, *, reason=None):
         
             #~ Validador y Error handler externo ~#
-        error = await validade_Actions(ctx.author, member)
+        error = await validade_Actions(ctx.author, member, "banear")
         if error:
             return await ctx.send(error)
         
