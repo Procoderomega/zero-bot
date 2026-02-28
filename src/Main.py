@@ -1,11 +1,15 @@
 import os
 import discord
 from discord.ext import commands
-from botconfig import TOKEN, PREFIX
+from dotenv import load_dotenv
 import asyncio
 
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
+PREFIX = os.getenv("PREFIX", "--")
+
 intents = discord.Intents.default()
-intents.message_content = True  # Privileged Intent, activar en portal Discord
+intents.message_content = True  #? Privileged Intent, activar en portal Discord
 
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
@@ -14,8 +18,9 @@ async def on_ready():
     print(f"{bot.user} Sirviendo...")
 
 async def main():
+    await bot.load_extension("cogs.moderation")
     await bot.load_extension("cogs.fun")    
-    await bot.start(TOKEN)  # ⚡ usar start en vez de run
+    await bot.start(TOKEN)
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -11,5 +11,4 @@ class Status_Shower(commands.Cog):
         await ctx.send(f'Actualmente estoy {estado}!')
 
 async def setup(bot):
-    await bot.add_cog(Status_Shower(bot))
-        
+    await bot.add_cog(Status_Shower(bot))        
