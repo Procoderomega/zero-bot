@@ -1,7 +1,7 @@
 from discord.ext import commands
 
 class pong(commands.Cog):
-    def __int__(self, bot):
+    def __init__(self, bot):
         self.bot = bot
     
     @commands.command(name="ping")

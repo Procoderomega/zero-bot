@@ -5,22 +5,32 @@ from dotenv import load_dotenv
 import asyncio
 
 load_dotenv()
+
 TOKEN = os.getenv("DISCORD_TOKEN")
 PREFIX = os.getenv("PREFIX", "--")
+GUILD_ID = int(os.getenv("GUILD_ID"))
 
 intents = discord.Intents.default()
-intents.message_content = True  #* Privileged Intent, activar en portal Discord
+intents.message_content = True
 
-bot = commands.Bot(command_prefix=PREFIX, intents=intents)
+class MyBot(commands.Bot):
+    async def setup_hook(self):
+        # Cargar cogs
+        await self.load_extension("cogs.moderation")
+        await self.load_extension("cogs.fun")
+
+        # Sync en desarrollo
+        guild = discord.Object(id=GUILD_ID)
+        await self.tree.sync(guild=guild)
+
+        print("Slash commands sincronizados ⚡")
+
+bot = MyBot(command_prefix=PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"{bot.user} Sirviendo...")
-
-async def main():
-    await bot.load_extension("cogs.moderation")
-    await bot.load_extension("cogs.fun")    
-    await bot.start(TOKEN)
+    synced = await bot.tree.sync()
+    print(f"{bot.user} Sirviendo... | Slash sync: {len(synced)}")
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    bot.run(TOKEN)
