@@ -21,9 +21,10 @@ class MyBot(commands.Bot):
         await self.load_extension("cogs.fun")
 
         # Sincronización rápida solo en tu servidor de desarrollo
-        #//guild = discord.Object(id=GUILD_ID)
-        #//self.tree.copy_global_to(guild=guild)
-        await self.tree.sync()
+        guild = discord.Object(id=GUILD_ID)
+        self.tree.copy_global_to(guild=guild)
+        await self.tree.sync(guild=guild)
+        #print("Slash commands sincronizados en global 🌍")
         print("Slash commands sincronizados en desarrollo ⚡")
 
 
