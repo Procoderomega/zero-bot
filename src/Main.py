@@ -16,20 +16,22 @@ intents.message_content = True
 class MyBot(commands.Bot):
     async def setup_hook(self):
         # Cargar cogs
+        await self.load_extension("cogs.utils")
         await self.load_extension("cogs.moderation")
         await self.load_extension("cogs.fun")
 
         # Sincronización rápida solo en tu servidor de desarrollo
-        guild = discord.Object(id=GUILD_ID)
-        self.tree.copy_global_to(guild=guild)
-        await self.tree.sync(guild=guild)
+        #//guild = discord.Object(id=GUILD_ID)
+        #//self.tree.copy_global_to(guild=guild)
+        await self.tree.sync()
         print("Slash commands sincronizados en desarrollo ⚡")
 
 
-bot = MyBot(command_prefix=PREFIX, intents=intents)
+bot = MyBot(command_prefix=PREFIX, intents=intents, help_command=None)
 
 @bot.event
 async def on_ready():
+    
     print(f"{bot.user} Sirviendo...")
 
 if __name__ == "__main__":

@@ -1,0 +1,18 @@
+{
+    "entretenimiento": {
+        "diceroll": "Gira un dado con 6 caras",
+        "estado": "El bot responde con como se siente",
+        "ping": "El bot responde pong",
+        "saludo": "El bot responde con un saludo"
+    },
+    "moderacion": {
+        "ban": "Banea a un usuario",
+        "kick": "Kickea a un usuario",
+        "clear": "Limpia X cantidad de mensajes",
+        "mute": "Mutea a un usuario",
+        "unmute": "Desmutea a un usurio"
+    },
+    "utilidades": {
+        "ayuda": "Lista todos los comandos de el bot"
+    }
+}
